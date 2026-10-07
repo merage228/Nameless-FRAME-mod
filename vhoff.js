@@ -27,7 +27,7 @@ Vhoff.baseHumors ??= [ //you know 'em, you love 'em -ARRHY
     "bone",
 ];
 
-addResources([Ochem.modLoc+"css/vhoff.css"]); //TODO: change where modLoc is once VHOFF is factored out grhgrgrh -ARRHY
+// addResources([Ochem.modLoc+"css/vhoff.css"]); - havent figured out the addResources stuff yet
 
 ['log', 'warn', 'error'].forEach(m=>{
     Vhoff[m] = function(...elements){ console[m]("%c[VHF]", 'color: #66ff66; font-style: italic;', "::", ...elements); }
