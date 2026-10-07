@@ -27,7 +27,7 @@ Vhoff.baseHumors ??= [ //you know 'em, you love 'em -ARRHY
     "bone",
 ];
 
-// addResources([Ochem.modLoc+"css/vhoff.css"]); - havent figured out the addResources stuff yet
+addResources([Ust.modLoc+"css/vhoff.css"]);
 
 ['log', 'warn', 'error'].forEach(m=>{
     Vhoff[m] = function(...elements){ console[m]("%c[VHF]", 'color: #66ff66; font-style: italic;', "::", ...elements); }
@@ -678,13 +678,13 @@ Vhoff.actionMultiChoice = function({
         el.choiceOpt = thisOpt;
         thisOpt.el = el;
         el.addEventListener('click', ()=>{
-            Ochem.log('clicking on', el);
+            Ust.log('clicking on', el);
             if (el.classList.contains('disabled')){ return; }
             if (el.classList.contains('selected')){
                 el.classList.remove('selected');
                 recalculateDisabled();
             } else {
-                Ochem.log('adding selected');
+                Ust.log('adding selected');
                 if (thisOpt.deselect){ //TODO: refactor? -ARRHY
                     if (thisOpt.deselect == 'all'){
                         buttonNodes.forEach(nd=>{
@@ -1511,7 +1511,7 @@ Vhoff.loadDialogueActors = ()=>{
     env.dialogueActors.actual_vhoff_error = { 
         name: 'VHOFFFIEND',
         noProcess: true,
-        image: Ochem.modLoc+'/img/vhofffiend.gif',
+        image: Ust.modLoc+'/img/vhofffiend.gif',
         type: "vhofffiend portrait-dark portrait-contain",
         voice: ()=>{play('talkrot', 3)}
     }
