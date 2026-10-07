@@ -1,4 +1,4 @@
-# Nameless-FRAME-mod
+# UNSTABLE STORM (temp. name)
 "Random bullshit: go!" type of corru.observer mod.
 Due to the regional stuff, im not able to make this thing private, and so, if youre reading this, then please, do not interact with this shit yet cause its heavily unfinished and not meant to be public.
 
