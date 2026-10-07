@@ -40,11 +40,11 @@ try {
             }
         }
     } else {
-        Ust.modLoc = "https://git.encodeco.de/circadianarrhythmia/organic-chemistry/raw/branch/latest/";
+        Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/raw/branch/latest/";
     }
 } catch (e) {
     console.error(`Caught error on mainload: ${e}`)
-    Ust.modLoc = "https://git.encodeco.de/circadianarrhythmia/organic-chemistry/raw/branch/latest/";
+    Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/raw/branch/latest/";
 }
 
 function entered(){
@@ -58,7 +58,7 @@ function entered(){
         setTimeout(()=>{
             chatter({actor: 'actual_site_error', readout:true, text: 'Warning! Only the /latest/ branch of Unstable storm is meant to be stable.'});
             chatter({actor: 'actual_site_error', readout:true, text: 'If you care about everything not exploding to pieces, consider modifying the mod URL to:'});
-            chatter({actor: 'actual_site_error', readout:true, text: '<a style="color: white;" href="https://git.encodeco.de/circadianarrhythmia/organic-chemistry/raw/branch/latest/main.js">https://git.encodeco.de/circadianarrhythmia/organic-chemistry/raw/branch/latest/main.js</a>'});
+            chatter({actor: 'actual_site_error', readout:true, text: '<a style="color: white;" href="https://github.com/merage228/Nameless-FRAME-mod/raw/branch/latest/main.js">https://git.encodeco.de/circadianarrhythmia/organic-chemistry/raw/branch/latest/main.js</a>'});
             chatter({actor: 'actual_site_error', readout:true, text: "Otherwise... there is no getting off Mr. Bones' Wild Ride. Enjoy the fireworks!"});
         }, 1000)
     }
