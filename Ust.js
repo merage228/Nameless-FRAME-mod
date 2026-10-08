@@ -15,7 +15,7 @@ i know the restructured/reorganized version of this mod may confuse you so here'
 
 // USEFUL CONSTANTS
 
-addResources([Ochem.modLoc+"css/ochem.css"]);
+addResources([Ust.modLoc+"css/Ust.css"]);
 
 //mod namespaces -ARRHY
 // didnt wanted to override ochem's namespaces, so i just renamed them - MERAGE
@@ -43,7 +43,7 @@ Ust.loadDialogueActors = ()=>{
     env.dialogueActors.actual_ust_error = { 
         name: 'USTFIEND',
         noProcess: true,
-        //image: Ust.modLoc+'/img/ochemfiend.gif',
+        //image: Ust.modLoc+'/img/Ustfiend.gif',
         type: "ustfiend portrait-dark portrait-contain",
         voice: ()=>{play('talkflower', 0.2)}
     };
@@ -115,7 +115,7 @@ for (const humor of Ust.modHumors) {
         loadCondition: ()=>true
     };
 }
-// Secret humors -ATHIE
+// Secret humors
 //Ust.modHumorConfig.delirium.unlockFlag = "dlrm_unlocked";
 //Ust.modHumorConfig.kaleidoscope.unlockFlag = "kldscp_unlocked";
 
@@ -470,7 +470,7 @@ Vhoff.onLoadFrame(()=>{
         Vhoff.baseHumors.forEach(humorKey=>{
             page.flags.components[humorKey] = 100;
         });
-        Ochem.enabledHumors.forEach(humorKey=>{
+        Ust.enabledHumors.forEach(humorKey=>{
             page.flags.components[humorKey] = 100;
         });
         page.party.forEach(member=>{
