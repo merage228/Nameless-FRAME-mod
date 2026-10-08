@@ -1,12 +1,10 @@
 [component="darkness"] {
-	--background: url(https://corru.observer/img/textures/blockerc.gif);
-	--organelle-background: url(https://corru.observer/img/textures/blockerc.gif);
-	--background-small: url(https://corru.observer/img/textures/blockerc.gif);
+	--background: url(https://corru.observer/img/textures/abberwobble.gif);
+	--organelle-background: url(https://corru.observer/img/textures/abberwobble.gif);
+	--background-small: url(https://corru.observer/img/textures/abberwobble.gif);
     --background-size: auto;
     --background-position: center;
-    --background-color: var(--bright-color);
-    --accent-color: var(--friend-color);
-    --font-color: var(--friend-color);
+    --background-color: var(--dark-color);
+    --accent-color: var(--dark-color);
+    --font-color: var(--bright-color);
 }
-
-.passive-epidermis_preemptive { background-image: var(--img, var(--fallback-status-image)), url(https://corru.observer/img/textures/blockerc.gif) !important; }
