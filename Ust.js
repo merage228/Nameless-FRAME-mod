@@ -92,20 +92,20 @@ Ust.modifyCrittaEyes = ()=>{
 Ust.modifyCrittaEyes();
 
 // All humors that this mod adds (or plans to add)
-//Ust.modHumors ??= [
-    //"darkness",
-    //"rust",
-    //"glass",
-    //"snow",
-    //"spectrum",
-    //"paradox",
-    //"malware",
+Ust.modHumors ??= [
+    "darkness",
+    "rust",
+    "glass",
+    "snow",
+    "spectrum",
+    "paradox",
+    "malware",
     //"delirium",
     //"scope",
     //"sand",
     //"okidoia",
     //"silence"
-//];
+];
 
 // Conditions for when a humor should be unlocked, and loaded if unlocked -ATHIE
 // Load condition may be set by user in the BSTERMINAL later -ATHIE
