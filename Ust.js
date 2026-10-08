@@ -15,7 +15,7 @@ i know the restructured/reorganized version of this mod may confuse you so here'
 
 // USEFUL CONSTANTS
 
-addResources([Ust.modLoc+"css/Ust.css"]);
+addResources([Ust.modLoc+"css/ust.css"]);
 
 //mod namespaces -ARRHY
 // didnt wanted to override ochem's namespaces, so i just renamed them - MERAGE
@@ -527,7 +527,7 @@ Vhoff.onLoadFrame(()=>{
         toAdd.push(`humors/${humor}/main.js`); //haha we said the thing humors humor like the mod amirite guys -ARRHY
     });
 
-    toAdd.push(`humors/common.js`);
+    //toAdd.push(`humors/common.js`);
 
     //TODO: do we still need this? -ARRHY
 
@@ -543,11 +543,11 @@ Vhoff.onLoadFrame(()=>{
 
     // LOADING COMBAT ACTORS
 
-    toAdd.push("combat_actors.js");
+    //toAdd.push("combat_actors.js");
 
     // LOADING EXTRA TEMP FILE
 
-    toAdd.push("extra_temp.js");
+    //toAdd.push("extra_temp.js");
 
     // LOADING OVERRIDES (TODO: refactor?)
 
@@ -555,10 +555,11 @@ Vhoff.onLoadFrame(()=>{
 
     // LOADING FISHIES
 
-    toAdd.push("fishies.js");
+    //toAdd.push("fishies.js");
 
     // LOADING BOSSES
 
+	/*
     toAdd.push(`bosses/bossrush_pit/main.js`);
     toAdd.push(`bosses/citadel/main.js`);
     toAdd.push(`bosses/dullzkoviks_revenge/main.js`);
@@ -566,6 +567,7 @@ Vhoff.onLoadFrame(()=>{
     toAdd.push(`bosses/hazardous/main.js`);
     toAdd.push(`bosses/interviewer/main.js`);
     toAdd.push(`bosses/intrusive_rematch/main.js`);
+	*/
 
     toAdd = toAdd.map(r=>Ust.modLoc+r);
 
@@ -573,6 +575,7 @@ Vhoff.onLoadFrame(()=>{
         Ust.enabledHumors.forEach(humor=>{
             Vhoff.load(`humor:${humor}`);
         });
+		/*
         Vhoff.load(`boss:pitrush`);
         Vhoff.load(`boss:citadel`);
         Vhoff.load(`boss:dull_revenge`);
@@ -580,6 +583,7 @@ Vhoff.onLoadFrame(()=>{
         Vhoff.load(`boss:hazardous`);
         Vhoff.load(`boss:interviewer`);
         Vhoff.load(`boss:intrusive_rematch`);
+		*/
 
 
         if (localStorage.getItem('frameSave')){
