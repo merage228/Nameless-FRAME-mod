@@ -43,14 +43,14 @@ Ust.loadDialogueActors = ()=>{
     env.dialogueActors.actual_ust_error = { 
         name: 'USTFIEND',
         noProcess: true,
-        image: Ust.modLoc+'/img/ochemfiend.gif', // no custom gifs or anything yet
+        //image: Ust.modLoc+'/img/ochemfiend.gif',
         type: "ustfiend portrait-dark portrait-contain",
         voice: ()=>{play('talkflower', 0.2)}
     };
     env.dialogueActors.actual_hmr_error = { 
         name: 'HMRFIEND',
         noProcess: true,
-        image: Ust.modLoc+'/img/humorfiend.gif',
+        //image: Ust.modLoc+'/img/humorfiend.gif',
         type: "hmrfiend portrait-dark portrait-contain",
         voice: ()=>{play('talkmind', 0.2)}
     };
@@ -503,8 +503,8 @@ Vhoff.onLoadFrame(()=>{
     //TODO: put locale loading in the preload (not in the load frame stuff?? idk) -ARRHY
     let localeLoad = [
         [
-            //Ust.modLoc+"/text/load.js",
-            //Ust.modLoc+`/text/locales/en-us.js`
+            Ust.modLoc+"/text/load.js",
+            Ust.modLoc+`/text/locales/en-us.js`
         ],
         [
             ['dummyLocaleLoad',()=>{
