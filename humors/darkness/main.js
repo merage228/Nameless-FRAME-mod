@@ -111,7 +111,7 @@ Vhoff.registerStatusEffectLoader("darkness_insomnia",{
 	name: "Insomnia",
 	beneficial: false,
 	icon: "https://narrativohazard-expunged.neocities.org/img/passives/flop_flesh_adrenaline.gif",
-	tickType: "onTurnEnd", // not sure if this is a thing. ill check it later - MERAGE
+	tickType: "onTurnEnd",
 	outgoingFlat: -1,
 	opposite: "darkness_hypersomnia",
     removes: ["darkness_hypersomnia"],
