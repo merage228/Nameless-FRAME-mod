@@ -93,13 +93,13 @@ Ust.modifyCrittaEyes();
 
 // All humors that this mod adds (or plans to add)
 Ust.modHumors ??= [
-    "darkness",
-    "rust",
-    "glass",
-    "snow",
-    "spectrum",
-    "paradox",
-    "malware",
+    "darkness"//,
+    //"rust",
+    //"glass",
+    //"snow",
+    //"spectrum",
+    //"paradox",
+    //"malware",
     //"delirium",
     //"scope",
     //"sand",
