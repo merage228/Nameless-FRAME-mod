@@ -52,14 +52,14 @@ function entered(){
         `${Ust.modLoc}/vhoff.js`,
     	`${Ust.modLoc}/Ust.js`
     ]);
-    if (!Ust.modLoc.includes('branch/latest') && !Ust.modLoc.includes('127')){
+    /* if (!Ust.modLoc.includes('branch/latest') && !Ust.modLoc.includes('127')){
         setTimeout(()=>{
             chatter({actor: 'actual_site_error', readout:true, text: 'Warning! Only the /latest/ branch of Unstable storm is meant to be stable.'});
             chatter({actor: 'actual_site_error', readout:true, text: 'If you care about everything not exploding to pieces, consider modifying the mod URL to:'});
             chatter({actor: 'actual_site_error', readout:true, text: '<a style="color: white;" href="https://github.com/merage228/Nameless-FRAME-mod/raw/branch/latest/main.js">https://git.encodeco.de/circadianarrhythmia/organic-chemistry/raw/branch/latest/main.js</a>'});
             chatter({actor: 'actual_site_error', readout:true, text: "Otherwise... there is no getting off Mr. Bones' Wild Ride. Enjoy the fireworks!"});
         }, 1000)
-    }
+    } */
 }
 
 if (document.URL.includes('credits')){
