@@ -44,7 +44,7 @@ try {
     }
 } catch (e) {
     console.error(`Caught error on mainload: ${e}`)
-    Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/raw/branch/latest/";
+    Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod";
 }
 
 function entered(){
