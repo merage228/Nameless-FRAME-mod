@@ -38,11 +38,11 @@ try {
             }
         }
     } else {
-        Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/raw/branch/main/";
+        Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod";
     }
 } catch (e) {
     console.error(`Caught error on mainload: ${e}`)
-    Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/";
+    Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod";
 }
 
 function entered(){
