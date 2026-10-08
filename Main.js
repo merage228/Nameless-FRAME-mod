@@ -6,8 +6,6 @@
 CHANGELOG ::
       - nothing yet
 
-TODO::
-- figure out the branch stuff here
 */
 
 window.Ust ??= {};
@@ -40,7 +38,7 @@ try {
             }
         }
     } else {
-        Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/raw/branch/latest/";
+        Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/raw/branch/main/";
     }
 } catch (e) {
     console.error(`Caught error on mainload: ${e}`)
