@@ -1,0 +1,391 @@
+/* for making player cards not overflow offscreen */
+.team {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    transition: 400ms cubic-bezier(.55,0,.39,1.26);
+    z-index: 30;
+    flex-wrap: wrap;
+}
+
+#combat.crittamode #enemy-team .actor {
+    margin: 0px 1rem;
+    margin-bottom: 3rem;
+}
+
+#ally-team .actor {
+    background-color: var(--dark-color);
+    margin-top: 3rem;
+}
+
+#crittaresult, #crittaresult * {
+    transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+    text-align: center;
+    z-index: 30;
+}
+
+.choice-multi {
+    transform: translateY(10vh);
+    z-index: 102;
+    position: fixed;
+    background: black;
+    padding: 5em;
+    border: 2px dashed;
+    color: var(--neutral-color);
+    max-width: 100%;
+}
+
+.choice-multi .choice-grid {
+    display: grid;
+    gap: 0.5em;
+    overflow: scroll;
+}
+
+.choice-multi .choice-grid .button {
+    display: block;
+    transition: 200ms ease-in-out;
+    white-space: nowrap;
+}
+
+.choice-multi .choice-grid .button.disabled {
+    background: url(https://corru.observer/img/textures/corruripple.gif);
+    color: var(--bright-color);
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.choice-multi .choice-finalise.disabled {
+    background: url(https://corru.observer/img/textures/corruripple.gif);
+    color: var(--bright-color);
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.choice-multi .choice-grid .row-header {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.choice-multi .choice-grid .column-header {
+    display: flex;
+    justify-content: center;
+    align-items: bottom;
+}
+
+.choice-multi .choice-grid .button:hover:not(.disabled) {
+    transform: scale(1.1);
+}
+
+.choice-multi .choice-finalise {
+    width: 100%;
+    transition: 200ms ease-in-out;
+}
+
+.choice-multi .choice-bottom {
+    display: flex;
+    align-items: top;
+    margin-top: 0.5em;
+    gap: 0.5em;
+}
+
+.choice-multi .choice-finalise.disabled {
+    color: var(--bright-color);
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.choice-multi .choice-finalise:hover:not(.disabled) {
+    transform: scale(1.1);
+}
+
+.choice-multi .choice-grid .button.selected {
+	color: var(--bastard-color);
+	background-color: var(--dark-color);
+}
+
+.choice-multi .choice-grid .button.selected:hover {
+	color: var(--dark-color);
+	background-color: var(--bastard-color);
+}
+
+.actiondef-extra {
+    /* display: flex;
+    justify-content: space-between; */
+    border-top: 1px solid var(--neutral-color);
+    padding-top: 0.5em;
+    margin-top: 0.75em;
+}
+
+.actiondef-extra h6 {
+	position: absolute;
+	background: black;
+	padding: 0.25em;
+	transform: translate(1em, -95%);
+	line-height: 1em;
+}
+
+.actiondef-extra > span {
+    color: var(--bright-color);
+    display: block;
+}
+
+
+.actiondef-extra .actiondef-flavor {
+    font-style: italic;
+    font-size: 10px;
+    margin-bottom: 0.5em;
+    color: var(--neutral-color);
+}
+
+.actiondef-extra .status {
+    text-transform: uppercase;
+}
+
+.dialogue-message.vhofffiend, .message.vhofffiend {
+    letter-spacing: 0;
+    text-shadow: 0px 1px #0000006b;
+    z-index: 1;
+    color: #6f6;
+    background: black;
+    text-align: left;
+    line-height: 1.5em;
+    border-top: 5px ridge #6f6;
+    border-bottom: 5px ridge #6f6;
+}
+
+.dialogue-message.vhofffiend::after, .message.vhofffiend::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.4;
+    background: url(https://corru.observer/img/textures/hazeflow.gif);
+    background-size: 100% auto, auto;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.dialogue-message.vhofffiend > .dialogue-portrait::after,
+.message.vhofffiend > img {
+    animation: HOVER 2.00s ease-in-out alternate-reverse infinite;
+    border-radius: 100%;
+} 
+
+.dialogue-message.vhofffiend + .dialogue-message.vhofffiend {
+    border-top: 0px ridge #6f6;
+    padding-top: 5px;
+    margin-top: 0;
+    transition: border-top 400ms, padding-top 400ms, transform 400ms;
+}
+
+.dialogue-message.vhofffiend:has( + .dialogue-message.vhofffiend) {
+    border-bottom: 0px ridge #6f6;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+    transition: border-bottom 400ms, padding-bottom 400ms, transform 400ms;
+}
+
+/* TODO: this kinda sucks */
+.componenteffect {
+    max-height: 150%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: white transparent;
+}
+
+critta-menu .partymember-actions {
+    max-height: 5em;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: white transparent;
+}
+
+
+.vhoff-devpanel {
+    /* position: absolute; */
+    /* top: 0;
+    right: 0; */
+    padding: 10px;
+    height: 100vh;
+    z-index: 2;
+    background: var(--dark-color);
+    border: 1px solid var(--neutral-color);
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 0;
+    overflow-y: scroll;
+}
+
+.vhoff-devpanel.hidden {
+    display: none;
+}
+
+#combat:has(~ .vhoff-devpanel:not(.hidden)) {
+    position: relative;
+    flex: 3 0 0;
+    width: auto;
+    height: 100vh;
+}
+
+.debug-section-actors {
+    display: flex;
+    flex-direction: row;
+    height: 200px; /* placeholder */
+    width: 100%;
+}
+
+.debug-team {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+}
+
+.debug-team-enemy {
+    border: solid 1px var(--bastard-color);
+}
+
+.debug-team-ally {
+    border: solid 1px var(--friend-color);
+}
+
+.debug-actor {
+    border: dashed 0.5px var(--bright-color);
+    padding: 3px;
+}
+
+.debug-actor-icons {
+    float: right;
+    gap: 3px;
+    display: flex;
+}
+
+.debug-actor.highlighted {
+    background: var(--neutral-color);
+    color: black;
+}
+
+.debug-info-view, .debug-info-view-sub {
+    display: grid;
+    width: 100%;
+    grid-template-columns: min-content 1fr;
+    grid-auto-rows: min-content;
+}
+
+.debug-info-view-sub {
+    margin-bottom: 2px;
+}
+
+.debug-info-item {
+    border: dotted 0.5px var(--bright-color);
+    padding: 2px;
+}
+
+.debug-info-item-key {
+    grid-column: 1 / 2;
+}
+.debug-info-item-val {
+    grid-column: 2 / 3;
+}
+
+input.debug-info-item-val {
+    color: white;
+    background: transparent;
+    font: inherit;
+}
+
+input[type='number'].debug-info-item-val {
+    background: #ff03;
+}
+
+input[type='text'].debug-info-item-val {
+    background: #f063;
+}
+
+.debug-result-status {
+    border: 1px solid var(--bright-color);
+    padding: 3px;
+    color: var(--bright-color);
+}
+
+.debug-result-action {
+    border: 1px solid var(--neutral-color);
+    padding: 3px;
+    color: var(--neutral-color);
+}
+
+.debug-result-actor {
+    border: 1px solid var(--friend-color);
+    padding: 3px;
+    color: var(--friend-color);
+}
+
+.debug-search-results {
+    display: grid;
+    width: 100%;
+    grid-template-columns: min-content min-content 1fr min-content;
+    grid-auto-rows: min-content;
+    height: 300px;
+    overflow-y: scroll;
+    border: 2px solid var(--bastard-color);
+}
+
+
+.debug-result-span-type {
+    grid-column: 1 / 2;
+}
+.debug-result-span-key {
+    grid-column: 2 / 3;
+}
+.debug-result-span-val {
+    grid-column: 3 / 4;
+}
+.debug-result-span-val-big {
+    grid-column: 3 / 5;
+}
+.debug-result-span-def {
+    grid-column: 4 / 5;
+}
+
+.debug-search-bar {
+    width: 100%;
+    resize: none;
+    border: 2px solid var(--bastard-color);
+    border-bottom: 1px;
+    background: #222;
+    color: var(--bright-color);
+}
+
+.debug-search-filter-settings, .debug-option-radio, .debug-option-alo {
+    display: flex;
+    flex-direction: row;
+    /* max-height: 3em */
+    text-align: center;
+}
+
+.debug-option-group {
+    gap: 2px;
+}
+
+.debug-option-radio-choice, .debug-option-alo-choice {
+    padding: 3px;
+    border: 1px solid var(--bright-color);
+}
+
+.debug-option-radio-choice {
+    color: #888;
+}
+.debug-option-radio-choice-selected {
+    color: black;
+    background: var(--neutral-color);
+}
+
+.debug-option-alo-choice-selected {
+    color: black;
+    background: var(--friend-color);
+}
