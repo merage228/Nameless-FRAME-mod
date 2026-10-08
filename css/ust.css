@@ -1,0 +1,449 @@
+.reply.commerce-humor {
+	flex-basis: 25%; /*humors are smaller now -ARRHY*/
+	font-size: 0.8rem; /*idfk. maybe? -ARRHY*/
+}
+
+/* turns out the dialogue-actor windows have a length limit which we have already started running into as of update 12 */
+.dialogue-actor {
+    max-height: unset;
+}
+
+/* humor styling */
+
+.statusfx-player_ethereal {
+    background-image: url(https://serverboss-crossreference.nekoweb.org/extras/img/tvstatic.gif);
+    background-size: auto 120%;
+    background-position: center;
+    opacity: 0.3;
+}
+
+.statusfx-player_conjoined {
+    background-image: url(https://serverboss-crossreference.nekoweb.org/extras/img/webs.gif);
+    background-size: auto 200%;
+    background-position: 60% 50%;
+    background-repeat: no-repeat;
+}
+
+.statusfx-favored {
+    background-image: url(https://corru.observer/img/textures/hazeflow.gif);
+    background-size: auto 120%;
+    background-position: center;
+    opacity: 1;
+}
+
+.statusfx-cursed {
+    background-image: url(https://corru.observer/img/textures/mneural.gif);
+    background-size: auto 120%;
+    background-position: center;
+    opacity: 1;
+}
+
+.statusfx-denatured {
+    content: "";
+    z-index: 10;
+    background-image: url(https://corru.observer/img/textures/warp.png);
+    background-size: 50% auto;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    width: 200% !important;
+    animation: status-drift 0.5s linear infinite;
+}
+
+.statusfx-serrations {
+    background-image: url(https://corru.observer/img/textures/spikedorb.gif);
+    background-size: auto 90%;
+    background-position: 3% 50%;
+    background-repeat: no-repeat;
+}
+
+.statusfx-serrations::after {
+    content: "";
+    width: 100%;
+    height: 125%;
+    background-image: url(https://corru.observer/img/textures/spiked.gif);
+    background-size: auto;
+    background-position: center;
+    animation: hover-minor 5s ease-in-out infinite alternate;
+}
+
+.statusfx-blindess {
+    background-image: radial-gradient(circle, rgb(0, 0, 0) 50%, rgba(0,0,0,0) 60%), url(https://corru.observer/img/textures/fear.gif), url(https://corru.observer/img/textures/blflametran.gif);
+    background-size: auto;
+    mix-blend-mode: unset;
+}
+
+.actor.status-hyperfocus_flat .statusfx-hyperfocus_flat { /*please just fucking work like this i beg of you*/
+    z-index: 10;
+    background-image: url(https://corru.observer/img/textures/regen.png);
+    background-size: auto 50%;
+    height: 200%;
+    width: 150%;
+    left: unset;
+    animation: status-drift-y 4s linear infinite;
+}
+
+.actor.status-hyperfocus_flat .statusfx-hyperfocus_flat {
+    background-image: url(https://corru.observer/img/textures/weyetran.gif);
+    background-position: center;
+    background-size: auto 25%;
+    animation: status-drift-y-notate 3s linear infinite;
+}
+
+.actor.status-evasion_mega .statusfx-evasion_mega {
+    background-image: url(https://corru.observer/img/textures/weyetran.gif);
+    background-size: auto 100%;
+    background-position: -100% right;
+    background-repeat: no-repeat;
+}
+
+.actor.status-vulnerable_mega .statusfx-vulnerable_mega {
+    background-image: url(https://corru.observer/img/textures/yeyetran.gif);
+    background-position: center;
+    animation: status-drift-y-notate 4s linear infinite reverse;
+	height: 200%;
+    width: 150%;
+    left: unset;
+	background-size: auto 50%;
+	z-index: 10;
+}
+
+.actor.status-evasion_ultra .statusfx-evasion_ultra {
+    background-image: url(https://corru.observer/img/textures/weyetran.gif);
+    background-size: auto 100%;
+    background-position: -100% right;
+    background-repeat: no-repeat;
+}
+
+.actor.status-ultravulnerable .statusfx-ultravulnerable {
+    background-image: url(https://corru.observer/img/textures/yeyetran.gif);
+    background-position: center;
+    animation: status-drift-y-notate 4s linear infinite reverse;
+	height: 200%;
+    width: 150%;
+    left: unset;
+	background-size: auto 50%;
+	z-index: 10;
+}
+
+.actor.status-hemorrhage .statusfx-hemorrhage {
+    height: 150%;
+    width: 125%;
+    left: -12.5%;
+    background-image: url(https://corru.observer/img/textures/rot.png);
+    background-size: 100%;
+    animation: portrait-wiggle 1s cubic-bezier(.55,0,.39,1.26) infinite alternate;
+}
+
+.actor.status-windup_telegraph_flat .statusfx-windup_telegraph_flat {
+    z-index: 10;
+    background-image: url(https://corru.observer/img/textures/targetpale.png);
+	background-size: 50% auto;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    width: 200%;
+    animation: status-drift 1s linear infinite;
+}
+
+.actor.status-winderup .statusfx-winderup {
+    z-index: 10;
+    background-image: url(https://narrativohazard-expunged.neocities.org/img/passives/flop_targetc.png);
+	background-size: 50% auto;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    width: 200%;
+    animation: status-drift 1s linear infinite;
+}
+
+.actor.status-windestup .statusfx-windestup {
+    z-index: 10;
+    background-image: url(https://narrativohazard-expunged.neocities.org/img/passives/flop_targetm.png);
+	background-size: 50% auto;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    width: 200%;
+    animation: status-drift 1s linear infinite;
+}
+
+.actor.status-final_windup .statusfx-final_windup {
+    z-index: 10;
+    background-image: url(https://narrativohazard-expunged.neocities.org/img/passives/flop_targetr.png);
+	background-size: 50% auto;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    width: 200%;
+    animation: status-drift 1s linear infinite;
+}
+
+.actor.status-windup_aim .statusfx-windup_aim {
+    z-index: 10;
+    background-image: url(https://narrativohazard-expunged.neocities.org/img/passives/flop_targetr.png);
+	background-size: 50% auto;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    width: 200%;
+    animation: status-drift 1s linear infinite;
+}
+
+.actor.status-windup_telegraph_flat .statusfx-windup_telegraph_flat,
+.actor.status-winderup .statusfx-winderup,
+.actor.status-windestup .statusfx-windestup,
+.actor.status-final_windup .statusfx-final_windup,
+.actor.status-windup_aim .statusfx-windup_aim {
+    background-size: 25% auto !important;
+    background-position: top !important;
+}
+
+.statusfx-windup_aim::after {
+    background-image: url(https://corru.observer/img/sprites/combat/bstrdcrosshair.gif);
+    background-size: auto 90%;
+    background-position: 3% 50%;
+    background-repeat: no-repeat;
+}
+
+.partymember-action.winderup-action::before { /* just really hoping that this will work honestly */
+    content: ":W+::";
+    color: var(--friend-color);
+}
+
+.partymember-action.windestup-action::before {
+    content: ":W++::";
+    color: var(--obesk-color);
+}
+
+.partymember-action.final_windup-action::before {
+    content: ":W+++::";
+    color: var(--bastard-color);
+}
+
+.partymember-action.aiming-action::before {
+    content: ":A::";
+    color: var(--bastard-color);
+}
+
+
+.actor.status-unnatural_carapace_flat.statusfx-unnatural_carapace_flat {
+    background-image: radial-gradient(circle, rgb(0, 0, 0) 0%, rgba(0,0,0,0) 100%), url(https://corru.observer/img/textures/carapace.gif??); /* wait why the hell are there question marks what is */
+    background-size: auto;
+    background-position: center;
+}
+
+.actor.status-unnatural_wound .statusfx-unnatural_wound {
+    background-image: url(https://corru.observer/img/textures/wound.gif);
+}
+
+.statusfx-poison {
+    background-image: url(https://corru.observer/img/textures/chromebtran.gif);
+    background-size: auto 120%;
+    background-position: center;
+    opacity: 1;
+}
+
+.statusfx-antidote {
+    background-image: url(https://corru.observer/img/textures/chromec.gif);
+    background-size: auto 120%;
+    background-position: center;
+    opacity: 0.8;
+}
+
+.statusfx-burning {
+    background-image: url(https://corru.observer/img/textures/bflametran.gif);
+    background-size: auto 120%;
+    background-position: center;
+    opacity: 1;
+}
+
+.statusfx-rejuvenation {
+    background-image: url(https://corru.observer/img/textures/cclouds.gif);
+    background-size: auto 120%;
+    background-position: center;
+    opacity: 1;
+}
+
+.statusfx-fatal_flaw {
+    background-image: url(https://corru.observer/img/sprites/combat/bstrdcrosshair.gif);
+    background-size: auto 90%;
+    background-position: 3% 50%;
+    background-repeat: no-repeat;
+}
+
+.statusfx-ultimate_flaw {
+    background-image: url(https://corru.observer/img/sprites/combat/bstrdcrosshair.gif);
+    background-size: auto 90%;
+    background-position: 3% 50%;
+    background-repeat: no-repeat;
+}
+
+.statusfx-rage {
+    background-image: url(https://corru.observer/img/textures/corruripplebastard.gif);
+}
+
+.sprite-wrapper .sprite-wrapper[id^="hazardous"] {
+    animation: bomber 20s ease-in-out infinite alternate;
+    transform-origin: bottom;
+}
+
+.sprite-wrapper .sprite-wrapper[id^="hazardous_archival"] {
+    animation: bomber 20s ease-in-out infinite alternate;
+    transform-origin: bottom;
+}
+
+.sprite-wrapper .sprite-wrapper[id^="hazardous_sniper"] {
+    animation: bomber 20s ease-in-out infinite alternate;
+    transform-origin: bottom;
+}
+
+.sprite-wrapper .sprite-wrapper[id^="hazardous_velskin"] {
+    animation: CONTAINERWOBBLEMINI 10s ease-in-out infinite alternate;
+    transform-origin: bottom;
+}
+
+.sprite-wrapper .sprite-wrapper[id^="hazardous_bomber"] {
+    animation: SHAKE 0.05ms linear infinite;
+    transform-origin: bottom;
+}
+
+.cmb .timer {
+    position: absolute;
+    font-family: bastard;
+    font-size: 5em;
+    animation: SHAKE 30s linear infinite;
+    color: var(--dark-color);
+}
+
+.dialogue-message.Ustfiend, .message.Ustfiend {
+    letter-spacing: 0;
+    text-shadow: 0px 1px #0000006b;
+    z-index: 1;
+    color: #f06;
+    background: black;
+    text-align: left;
+    line-height: 1.5em;    
+    border-top: 5px ridge #f06;
+    border-bottom: 5px ridge #f06;
+}
+
+.dialogue-message.Ustfiend {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.dialogue-message.Ustfiend::after, .message.Ustfiend::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.4;
+    background: url(https://corru.observer/img/textures/corruripplebastard.gif);
+    background-size: 100% auto, auto;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.dialogue-message.Ustfiend > .dialogue-portrait::after,
+.message.Ustfiend > img {
+    animation: SPIN 6.00s linear infinite;
+    border-radius: 100%;
+}  
+
+.dialogue-message.Ustfiend + .dialogue-message.Ustfiend {
+    border-top: 0px ridge #f06;
+    padding-top: 5px;
+    margin-top: 0;
+    transition: border-top 400ms, padding-top 400ms, transform 400ms;
+}
+
+.dialogue-message.Ustfiend:has( + .dialogue-message.Ustfiend) {
+    border-bottom: 0px ridge #f06;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+    transition: border-bottom 400ms, padding-bottom 400ms, transform 400ms;
+}
+
+.dialogue-message.humorfiend, .message.humorfiend {
+    letter-spacing: 0;
+    text-shadow: 0px 1px #0000006b;
+    z-index: 1;
+    color: #f0f;
+    background: black;
+    text-align: left;
+    line-height: 1.5em;    
+    border-top: 5px ridge #90f;
+    border-bottom: 5px ridge #90f;
+}
+
+.dialogue-message.humorfiend + .dialogue-message.humorfiend {
+    border-top: 0px ridge #90f;
+    padding-top: 5px;
+    margin-top: 0;
+    transition: border-top 400ms, padding-top 400ms, transform 400ms;
+}
+
+.dialogue-message.humorfiend:has( + .dialogue-message.humorfiend) {
+    border-bottom: 0px ridge #90f;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+    transition: border-bottom 400ms, padding-bottom 400ms, transform 400ms;
+}
+
+.dialogue-message.humorfiend::after, .message.humorfiend::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: center;
+    z-index: -1;
+    opacity: 0.2;
+    background: url(https://corru.observer/img/textures/papermelt.gif);
+    background-size: 100% auto, auto;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.dialogue-message.humorfiend > .dialogue-portrait::after,
+.message.humorfiend > img {    
+    animation: SPIN-Y 6.00s ease-in-out infinite;
+    border-radius: 100%;
+}
+
+critta-menu .partymember-action.winderup-action {
+	color: var(--friend-color);
+}
+
+critta-menu .partymember-action.windestup-action {
+	color: var(--obesk-color);
+}
+
+critta-menu .partymember-action.final_windup-action {
+	color: var(--bastard-color);
+}
+
+/* makes the humors smaller and scrollable - thanks adenator! */
+
+#palette {
+    width: 60%;
+    justify-content: safe center;
+    border: 1px solid var(--neutral-color);
+    flex-shrink: 0;
+    min-height: 12.5%;
+    right: 25%;
+    position: sticky;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-color: #ffff00b5 #000;
+}
+
+#palette .component {
+    flex-shrink: 0;
+    min-width: 3em;
+}
+
+critta-menu #cauldron .component.undiscovered {
+    min-width: 1.5em;
+}
