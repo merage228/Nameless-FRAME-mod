@@ -5,7 +5,7 @@ Vhoff.registerLoader("humor:darkness", ()=>{
   Vhoff.registerHumor("darkness",{ // themed around limitating and constricting others in different ways
 		name: "Darkness",
 		description: "'dread and limitation'",
-		help: "'insomnia';'stasis';'veil'",
+		help: "'insomnia';'terror';'shroud'",
 
 		primary: {
 			alterations: [["primary", "darkness_drain"]],
@@ -75,6 +75,8 @@ Vhoff.registerLoader("humor:darkness", ()=>{
 		receive_repairs: ["grant me some more time"],
 		receive_fear: ["what is that thing?", "when will this end...", "this shouldn't be hapening"],
 		receive_redirection: ["stay focused", "dont let me down"],
+		receive_darkness_shroud: ["see you soon", "come with me..."],
+		receive_darkness_plain: ["ö÷øû%&!", "dont look"],
 	});
 
   /*
@@ -91,10 +93,10 @@ Vhoff.registerLoader("humor:darkness", ()=>{
 	"status_effect:darkness_insomnia",
 	"status_effect:darkness_hypersomnia",
 	"status_effect:darkness_paralich",
-	"status_effect:darkness_hidden",
+	//"status_effect:darkness_blind",
 	"status_effect:darkness_shroud",
-	"status_effect:darkness_blind",
-	"status_effect:fated_darkness",
+	"status_effect:darkness_plain",
+	//"status_effect:fated_darkness",
 	"action:darkness_drain",
 	"action:darkness_terror",
 	"action:darkness_enveil",
@@ -158,6 +160,84 @@ Vhoff.registerStatusEffectLoader("darkness_hypersomnia",{
 	help: "+2 outgoing flat damage/heal. on turn, receive +1T:FOCUSED and +1T:EVASION\nupon status expiery, receive 1T:STUN"
 });
 
+Vhoff.registerStatusEffectLoader("darkness_paralich",{
+	name: "Paralyzing terror",
+	beneficial: false,
+	icon: "https://narrativohazard-expunged.neocities.org/img/passives/flop_flesh_adrenaline.gif",
+	opposite: "focused",
+    removes: ["focused"],
+	tickType: "special",
+	prohibitPrimary: true,
+	prohibitSecondary: true,
+	prohibitUtility: true,
+	grantsActions: ["darkness_awake"],
+	help: "+200% IN:HIT%, prohibits actor's primary/secondary/utility actions\ngain action:: "WAKE UP""
+});
+
+Vhoff.registerStatusEffectLoader("darkness_shroud",{
+    name: "Shrouded",
+    help: `untargetable. 1 turn max`,
+    icon: "/img/sprites/combat/statuses/shroud.gif",
+    beneficial: true,
+    untargetable: true,
+	opposite: "darkness_plain",
+	events: {
+
+	onAddStatus: function({target, statusObj}) {
+        if(statusObj.slug == "darkness_shroud") {
+            if(this.status.duration > 1) this.status.duration = 1
+            updateStats({actor: this.status.affecting})
+		}
+	},
+	onRemoveStatus: function(removingStatus) {
+		if (removingStatus.slug == "darkness_shroud") {
+			addStatus({target: this.status.affecting, origin: false, status: "darkness_plain", length: 1})
+		}
+	},
+});
+
+Vhoff.registerStatusEffectLoader("darkness_plain",{
+    name: "In plain sight",
+    help: `this actor cannot receive any untargetable statuses`,
+    icon: "/img/sprites/combat/statuses/shroud.gif",
+    beneficial: false,
+    untargetable: false,
+	opposite: "darkness_shroud",
+    removes: ["darkness_shroud"],
+	events: {
+		onBeforeAddStatus: function(context) {
+			let status = context.status
+			if(status.untargetable == true) {
+				context.noAdd = true
+			}
+		}
+	}
+});
+
+Vhoff.registerActionLoader("darkness_awake",{
+    name: "Wake up",
+    type: 'autohit',
+    anim: "skitter",
+    usage: {
+        act: "%USER PUSHES THROUGH THE HORROR"
+    },
+    details: {
+        onUse: `'50%C: remove [STATUS::darkness_paralich]'`,
+        flavor: "'attempt to focus on what matters'"
+    },
+    stats: {
+        status: {
+            darkness_paralich: {name: "darkness_paralich", showReference: true}
+        }
+    },
+    exec: function(user, target) {
+		if (Math.random() < (0.5)) {
+            removeStatus(user, "darkness_paralich")
+            return 'nothing'
+		},
+    },
+});
+
 Vhoff.registerActionLoader("darkness_drain",{
 	name: "Drain",
 	type: 'target',
@@ -216,6 +296,86 @@ Vhoff.registerActionLoader("darkness_drain",{
 			}
 		})
 	},
+});
+
+Vhoff.registerActionLoader("darkness_terror",{
+	name: "Terrorize",
+	type: 'target',
+	anim: "basic-attack",
+	usage: {
+		act: "%USER TERRIFIES %TARGET",
+		hit: "%TARGET IS PARALYZED BY TERROR",
+		miss: "%TARGET LOOKS AWAY"
+	},
+	details: {
+		flavor: "'tear through self to terrorize target';'limit their actions and movement'",
+		onHit: `'[STATUS::darkness_paralich]';'-1 hp to self'`,
+	},
+	stats: {
+		accuracy: 0.9,
+		crit: 0,
+		status: {
+			darkness_paralich: {
+				name: 'darkness_paralich',
+				length: 1
+			}
+		}
+	},
+	exec: function(user, target) {
+		return env.GENERIC_ACTIONS.singleTarget({
+			action: this, 
+			user, 
+			target,
+			hitSfx: {
+				name: 'talkFairy',
+				rate: 0.3
+			},
+			hitStatus: this.stats.status.darkness_paralich, 
+			genExec: ({user})=>{
+				setTimeout(()=>{
+					env.rpg.effectMessage.action({
+						user: user,
+						target: user,
+						action: "%USER stabs themselves!"
+					})
+					combatHit(user, {amt: 1, autohit: true, crit: 0, origin: user, redirectable: false})
+				}, env.ADVANCE_RATE*0.2)
+			}
+		})
+	},
+});
+
+Vhoff.registerActionLoader("darkness_enveil",{
+	name: "Enveil",
+	type: 'autohit',
+	anim: "",
+	beneficial: true,
+	usage: {
+		act: "%USER HIDES IN THE DARK"
+	},
+	details: {
+		onUse: `'[STATUS::darkness_hidden] [STATUS::focused]'`,
+		flavor: "'become one with the shadows';'wait for an apportunity'"
+	},
+	stats: {
+		status: {
+			darkness_hidden: {
+				name: 'darkness_hidden',
+				length: 1
+			},
+			focused: {
+				name: 'focused',
+				length: 2
+			}, 
+		}
+	},
+	exec: function(user, target) {
+		play('mend', 0.4);
+		Vhoff.ACTIONS.inflictStatus(user, user, this.stats.status.focused, {noReact: true});
+		Vhoff.ACTIONS.inflictStatus(user, user, this.stats.status.darkness_hidden);
+		return 'nothing';
+	},
+	avoidChaining: true
 });
 
 Vhoff.load("humor:darkness");
