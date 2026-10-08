@@ -122,9 +122,14 @@ Vhoff.registerStatusEffectLoader("darkness_insomnia",{
 			
 			updateStats({actor: this.status.affecting})
 		},
+		onRemoveStatus: function(removingStatus) {
+			if (removingStatus.slug == "darkness_insomnia") {
+				addStatus({target: this.status.affecting, origin: false, status: "empowered", length: 2})
+			}
+		},
 	},
 
-	help: "-1 outgoing flat damage/heal. on turn, receive +1T:WEAKENED\nupon status expiery, receive +1T:EMOWERED"
+	help: "-1 outgoing flat damage/heal. on turn, receive +1T:WEAKENED\nupon status expiery, receive +2T:EMOWERED"
 });
 
 Vhoff.registerStatusEffectLoader("darkness_hypersomnia",{
@@ -139,8 +144,14 @@ Vhoff.registerStatusEffectLoader("darkness_hypersomnia",{
 	events: {
 		onTurn: function() {
 			addStatus({target: this.status.affecting, origin: false, status: "focused", length: 1})
+			addStatus({target: this.status.affecting, origin: false, status: "evasion", length: 1})
 			
 			updateStats({actor: this.status.affecting})
+		},
+		onRemoveStatus: function(removingStatus) {
+			if (removingStatus.slug == "darkness_hypersomnia") {
+				addStatus({target: this.status.affecting, origin: false, status: "stun", length: 1})
+			}
 		},
 	},
 
