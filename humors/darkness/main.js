@@ -158,6 +158,65 @@ Vhoff.registerStatusEffectLoader("darkness_hypersomnia",{
 	help: "+2 outgoing flat damage/heal. on turn, receive +1T:FOCUSED and +1T:EVASION\nupon status expiery, receive 1T:STUN"
 });
 
+Vhoff.registerActionLoader("darkness_drain",{
+	name: "Drain",
+	type: 'target',
+	anim: "basic-attack",
+	usage: {
+		act: "%USER INFLICTS %TARGET",
+		crit: "%TARGET IS MADDENED",
+		hit: "%TARGET IS DRAINED",
+		miss: "%TARGET RESISTS"
+	},
+	details: {
+		flavor: "'curse target to cause madness';'can inflict heavy terror and benefit from drained energy'",
+		onHit: `'[STAT::amt] [STATUS::darkness_insomnia]'`,
+		onCrit: `'[STATUS::terror] to target';'[STATUS::empowered] to self'`,
+	},
+	stats: {
+		accuracy: 1,
+		crit: 0.6,
+		amt: 1,
+		status: {
+			darkness_insomnia: {
+				name: 'darkness_insomnia',
+				length: 3
+			},
+			terror: {
+				name: 'terror',
+				length: 1
+			},
+			empowered: {
+				name: 'empowered',
+				length: 1
+			}
+		}
+	},
+	exec: function(user, target) {
+		return env.GENERIC_ACTIONS.singleTarget({
+			action: this, 
+			user, 
+			target,
+			hitSfx: {
+				name: 'dull',
+				rate: 1.25
+			},
+			critStatus: this.stats.status.terror,
+			hitStatus: this.stats.status.darkness_insomnia, 
+			critExec: ({target})=>{
+				setTimeout(()=>{
+					env.rpg.effectMessage.action({
+						user: user,
+						target: target,
+						action: "%USER steals energy!"
+					})
+					addStatus({target: user, origin: user, status: "empowered", length: 1, noReact: true});
+					play("talkfairy", 2)
+				}, env.ADVANCE_RATE*0.5)
+			}
+		})
+	},
+});
 
 Vhoff.load("humor:darkness");
 
