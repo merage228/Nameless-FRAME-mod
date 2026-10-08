@@ -42,13 +42,13 @@ try {
     }
 } catch (e) {
     console.error(`Caught error on mainload: ${e}`)
-    Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod";
+    Ust.modLoc = "https://github.com/merage228/Nameless-FRAME-mod/";
 }
 
 function entered(){
     console.log('LOADING UNSTABLE STORM...');
     addResources([
-        `${Ust.modLoc}/framesave.js`,
+        //`${Ust.modLoc}/framesave.js`,
         `${Ust.modLoc}/vhoff.js`,
     	`${Ust.modLoc}/Ust.js`
     ]);
