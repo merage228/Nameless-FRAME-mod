@@ -2,7 +2,7 @@ Vhoff.registerLoader("humor:darkness", ()=>{
 
   addResources([Ust.modLoc+"humors/darkness/main.css"]);
 
-  Vhoff.registerHumor("darkness",{ // themed around limitating foes in different ways (limited vision, limited actions, etc.)
+  Vhoff.registerHumor("darkness",{ // themed around limitating and constricting others in different ways
 		name: "Darkness",
 		description: "'dread and limitation'",
 		help: "'insomnia';'stasis';'veil'",
@@ -29,28 +29,28 @@ Vhoff.registerLoader("humor:darkness", ()=>{
 		}
 	});
 
-  /*
-	Vhoff.registerAugment('backstab', {
-		name: "Weakpoint Strike",
+  /* idk what to do with the augments, considering the ing update removed them - MERAGE
+	Vhoff.registerAugment('placeholder', {
+		name: "placeholder",
 		image: "/img/sprites/combat/augs/distract.gif",
-		description: "'move stealthily to strike unaware foes';'exploit critical flaws'",
-		alterations: [["flicker_stab", "darkness_backstab"]],
+		description: "'';''",
+		alterations: [["darkness_drain", "darkness_placeholder"]],
 		component: ["primary", "darkness"],
 	});
 
-	Vhoff.registerAugment('remoteshutdown', {
-		name: "Remote Shutdown",
+	Vhoff.registerAugment('placeholdern', {
+		name: "placeholder",
 		image: "/img/sprites/combat/augs/ultraspy.gif",
-		description: "'utilize illegal groundsmindry';'directly shut down foes'",
-		alterations: [["shell_shutdown", "darkness_remote_shutdown"]],
+		description: "'';''",
+		alterations: [["darkness_terror", "darkness_placeholder"]],
 		component: ["secondary", "darkness"],
 	});
 
-	Vhoff.registerAugment('evalexec', {
-		name: "Planned Team Attack",
+	Vhoff.registerAugment('placeholder', {
+		name: "placeholder",
 		image: "/img/sprites/combat/augs/sacrifice.gif",
-		description: "'recede to plot chains of attacks from allies';'consume unnatural speed for extra primary usage'",
-		alterations: [["darkness_hyperfocus", "evaluate"], ["ADD", "special_execute"]],
+		description: "'';''",
+		alterations: [["darkness_enveil", "darkness_placeholder"]],
 		component: ["utility", "darkness"],
 	});
   */
@@ -105,6 +105,47 @@ Vhoff.registerLoader("humor:darkness", ()=>{
 	//"status_effect:dread"
 ,
 ]);
+
+
+Vhoff.registerStatusEffectLoader("darkness_insomnia",{
+	name: "Insomnia",
+	beneficial: false,
+	icon: "https://narrativohazard-expunged.neocities.org/img/passives/flop_flesh_adrenaline.gif",
+	tickType: "onTurnEnd", // not sure if this is a thing. ill check it later - MERAGE
+	outgoingFlat: -1,
+	opposite: "darkness_hypersomnia",
+    removes: ["darkness_hypersomnia"],
+	
+	events: {
+		onTurn: function() {
+			addStatus({target: this.status.affecting, origin: false, status: "weakened", length: 1})
+			
+			updateStats({actor: this.status.affecting})
+		},
+	},
+
+	help: "-1 outgoing flat damage/heal. on turn, receive +1T:WEAKENED\nupon status expiery, receive +1T:EMOWERED"
+});
+
+Vhoff.registerStatusEffectLoader("darkness_hypersomnia",{
+	name: "Hypersomnia",
+	beneficial: true,
+	icon: "https://narrativohazard-expunged.neocities.org/img/passives/flop_flesh_adrenaline.gif",
+	tickType: "onTurnEnd",
+	outgoingFlat: 2,
+	opposite: "darkness_insomnia",
+    removes: ["darkness_insomnia"],
+	
+	events: {
+		onTurn: function() {
+			addStatus({target: this.status.affecting, origin: false, status: "focused", length: 1})
+			
+			updateStats({actor: this.status.affecting})
+		},
+	},
+
+	help: "+2 outgoing flat damage/heal. on turn, receive +1T:FOCUSED and +1T:EVASION\nupon status expiery, receive 1T:STUN"
+});
 
 
 Vhoff.load("humor:darkness");
