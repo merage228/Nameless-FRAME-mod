@@ -100,7 +100,7 @@ Vhoff.registerLoader("humor:darkness", ()=>{
 	"action:darkness_drain",
 	"action:darkness_terror",
 	"action:darkness_enveil",
-	//"action:darkness_backstab",
+	"action:darkness_awake",
 	//"action:darkness_remote_shutdown",
 	//"action:evaluate",
 	//"action:special_execute",
