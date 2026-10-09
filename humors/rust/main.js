@@ -8,7 +8,7 @@ Vhoff.registerLoader("humor:rust", ()=>{
 		help: "'wound';'mark';'augment'",
 
 		primary: {
-			alterations: [["primary", "rust_scrap"]],
+			alterations: [["primary", "rust_slash"]],
 			stats: {
 				maxhp: 3
 			},
@@ -89,6 +89,24 @@ Vhoff.registerLoader("humor:rust", ()=>{
 
 },[]);
 
+},[
+	"status_effect:rust_scar",
+	"status_effect:rust_rust",
+	"status_effect:rust_marked",
+	"status_effect:rust_crumble",
+	"status_effect:rust_towering",
+	"status_effect:rust_patch",
+	//"status_effect:fated_rust",
+	"action:rust_slash",
+	"action:rust_target",
+	"action:rust_change",
+	//"action:darkness_backstab",
+	//"action:darkness_remote_shutdown",
+	//"action:evaluate",
+	//"action:special_execute",
+	//"status_effect:dread"
+,
+]);
 
 // Vhoff.load("humor:rust");
 
